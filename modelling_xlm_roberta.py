@@ -1495,11 +1495,11 @@ class XLMRobertaForTokenClassification(XLMRobertaPreTrainedModel):
         self.dropout = nn.Dropout(classifier_dropout)
         self.classifier = nn.Linear(config.hidden_size, config.num_labels)
 
-        torch.nn.init.zeros_(self.classifier.weight)
-        torch.nn.init.zeros_(self.classifier.bias)
-
         # Initialize weights and apply final processing
         self.post_init()
+
+        torch.nn.init.zeros_(self.classifier.weight)
+        torch.nn.init.zeros_(self.classifier.bias)
 
     @add_start_docstrings_to_model_forward(XLM_ROBERTA_INPUTS_DOCSTRING.format("batch_size, sequence_length"))
     @add_code_sample_docstrings(
