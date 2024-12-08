@@ -35,11 +35,21 @@ The goal of the experiment is to find evidence that the removal of the last Tran
 2. Multilingual [XML-V](https://aclanthology.org/2023.emnlp-main.813/) is fine-tuned on [CoNLL 2003](https://aclanthology.org/W03-0419/) and tested on [Afrikaans NER](https://repo.sadilar.org/handle/20.500.12185/299) dataset.
 3. The results for multiple learning rates are reported. The training steps are adjusted so both models with the same learning rate can converge.
 <img width="960" alt="ner_knowledge_transfer" src="https://github.com/user-attachments/assets/9259b66a-1b40-43ee-820d-5049336e9ece">
+
 Given the same training configuration, `l11` consistently outperforms `l12`, although the effect is decreased with the learning rate increase. The latter may be the evidence of `l12` requiring higher learning rate due to the need to adjust more weights. Since these two networks are the same, except `l11` has the last Transformer block removed, this leads to the conclusion that the last block is suboptimally initialized.  
 
 The effect is especially evident on extremely low learning rates: `5e-6` and `1e-6`:
 <img width="960" alt="low_lr_conll03" src="https://github.com/user-attachments/assets/7692be16-f350-47aa-9ad4-2f89ee7c0483">
 The `l12` model takes a lot longer to converge, and in case of `1e-6` learning rate, converges to a significantly lower F1 score.
+
+# Contribution
+
+Any contribution is highly encouraged! Have a look at [Discussions](https://github.com/ViktorooReps/vive_la_ner/discussions) tab to suggest new experiments, critique the results or propose help.
+
+# Goal
+
+* Improve the understanding of fine-tuning process and domain shift challenges.
+* Establish and popularize a better simple fine-tuning procedure.
 
 ## Citation
 
